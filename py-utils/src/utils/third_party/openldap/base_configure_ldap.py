@@ -45,10 +45,10 @@ class BaseConfig:
 
         fileList = glob.glob('/etc/openldap/slapd.d/cn=config/cn=schema/*ppolicy.ldif')
         for policyFile in fileList:
-        try:
-            os.remove(policyFile)
-        except:
-            print('Error while deleting '+ policyFile)
+            try:
+                os.remove(policyFile)
+            except:
+                print('Error while deleting '+ policyFile)
         module0File = '/etc/openldap/slapd.d/cn=config/cn=module{0}.ldif'
         try:
             os.remove(module0File)
@@ -68,10 +68,10 @@ class BaseConfig:
         try:
             files = glob.glob('/etc/openldap/slapd.d/cn=config/olcDatabase={2}mdb/*')
             for f in files:
-            try:
-                os.remove(f)
-            except:
-                print('Error while deleting '+ f)
+                try:
+                    os.remove(f)
+                except:
+                    print('Error while deleting '+ f)
         except:
             print('Error while deleting '+ mdbDirectory)
         mdbFile = '/etc/openldap/slapd.d/cn=config/olcDatabase={2}mdb.ldif'
@@ -83,10 +83,10 @@ class BaseConfig:
         if forceclean == 'True' :
             files = glob.glob('/var/lib/ldap/*')
             for f in files:
-            try:
-                os.remove(f)
-            except:
-                print('Error while deleting '+ f)
+                try:
+                    os.remove(f)
+                except:
+                    print('Error while deleting '+ f)
 
         copyfile(INSTALLDIR+'/olcDatabase={2}mdb.ldif' , '/etc/openldap/slapd.d/cn=config/olcDatabase={2}mdb.ldif')
 
